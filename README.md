@@ -59,6 +59,6 @@ Accessibility-conscious UI development
 
 👩‍💻 Author
 
-Shravani Mahadik
+Rakshitha
 
 Built as part of a web development implementation task focusing on dynamic JavaScript DOM logic and RESTful API integration.
