@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Dynamic REST API client with search, filtering, sorting and local storage."
+    >
+
+    <title>Dynamic Product Explorer</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <div>
+                <p class="eyebrow">REST API Client</p>
+                <h1>Product Explorer</h1>
+            </div>
+
+            <button
+                id="theme-toggle"
+                class="icon-button"
+                type="button"
+                aria-label="Toggle dark mode"
+            >
+                🌙
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="controls-section" aria-labelledby="controls-title">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Dynamic Data</p>
+                    <h2 id="controls-title">Explore Products</h2>
+                </div>
+
+                <button
+                    id="refresh-button"
+                    class="secondary-button"
+                    type="button"
+                >
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div class="controls">
+
+                <div class="control-group search-group">
+                    <label for="search-input">Search products</label>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search by product title..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="control-group">
+                    <label for="category-filter">Category</label>
+
+                    <select id="category-filter">
+                        <option value="all">All categories</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="sort-select">Sort by</label>
+
+                    <select id="sort-select">
+                        <option value="default">Default</option>
+                        <option value="title-asc">Title A–Z</option>
+                        <option value="title-desc">Title Z–A</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div
+                id="results-summary"
+                class="results-summary"
+                aria-live="polite"
+            >
+                Loading products...
+            </div>
+
+        </section>
+
+
+        <section
+            id="loading-state"
+            class="loading-state"
+            aria-label="Loading products"
+        >
+            <div class="skeleton-grid">
+
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+
+            </div>
+        </section>
+
+
+        <section
+            id="error-state"
+            class="error-state"
+            role="alert"
+            hidden
+        >
+            <div class="error-card">
+                <span class="error-icon">⚠️</span>
+
+                <h2>Unable to load products</h2>
+
+                <p id="error-message">
+                    Something went wrong while fetching the product data.
+                </p>
+
+                <button
+                    id="retry-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    Try Again
+                </button>
+            </div>
+        </section>
+
+
+        <section
+            id="products-section"
+            class="products-section"
+            aria-labelledby="products-title"
+        >
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Results</p>
+                    <h2 id="products-title">Products</h2>
+                </div>
+            </div>
+
+            <div
+                id="products-grid"
+                class="products-grid"
+            >
+                <!-- Products are inserted here by JavaScript -->
+            </div>
+
+            <div
+                id="empty-state"
+                class="empty-state"
+                hidden
+            >
+                <h2>No products found</h2>
+
+                <p>
+                    Try changing your search term or category filter.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                Dynamic Product Explorer · REST API + JavaScript
+            </p>
+        </div>
+    </footer>
+
+
+    <script
+        type="module"
+        src="scripts/app.js"
+    ></script>
+
+</body>
+</html>
